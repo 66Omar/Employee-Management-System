@@ -61,7 +61,7 @@ class UpdateProjectSerializer(serializers.ModelSerializer):
         start_date = data.get("start_date") or self.instance.start_date
         end_date = data.get("end_date") or self.instance.end_date
 
-        if data["department"].company != company:
+        if data.get("department") and data["department"].company != company:
             raise serializers.ValidationError(
                 "Department does not belong to the selected company."
             )

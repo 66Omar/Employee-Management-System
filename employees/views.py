@@ -104,7 +104,7 @@ class EmployeeAPIView(APIView):
         """
         employee = get_object_or_404(Employee, id=employee_id)
 
-        if not IsAdmin(request.user.id, employee.id):
+        if not IsAdmin(request.user.id, employee.company_id):
             return Response(
                 {"detail": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED
             )

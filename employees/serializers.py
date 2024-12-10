@@ -59,7 +59,7 @@ class UpdateEmployeeSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         company = self.instance.company
-        if data["department"].company != company:
+        if data.get("department") and data["department"].company != company:
             raise serializers.ValidationError(
                 "Department does not belong to the selected company."
             )
