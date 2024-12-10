@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Project
+from employees.models import Employee
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -37,7 +38,10 @@ class CreateProjectSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("End date must be after the start date.")
 
         for employee in assigned_employees:
-            if employee.company_id != company.id:
+            if (
+                employee.company_id != company.id
+                or employee.employee_status != Employee.HIRED
+            ):
                 raise serializers.ValidationError(
                     f"Employee {employee.id} does not belong to the selected company."
                 )
@@ -70,7 +74,10 @@ class UpdateProjectSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("End date must be after the start date.")
 
         for employee in assigned_employees:
-            if employee.company_id != company.id:
+            if (
+                employee.company_id != company.id
+                or employee.employee_status != Employee.HIRED
+            ):
                 raise serializers.ValidationError(
                     f"Employee {employee.id} does not belong to the selected company."
                 )
