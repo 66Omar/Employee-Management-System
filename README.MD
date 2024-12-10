@@ -26,7 +26,7 @@ Authorization    Token {{token}}
 
 ##### 1- Database design (Refer to the diagram above)
 
-- Changed the propsed schema so that username, email, address and phone number are in User model as those are less likely to change and are user-specific
+- Changed the proposed schema so that username, email, address and phone number are in User model as those are less likely to change and are user-specific
 
 - Moved role to employee model as the values [admin, manager, employee] seem to be company specific as well, the role is then used for authorization and determining who can add, view, edit or delete certain data
 
@@ -92,10 +92,14 @@ All read operations are public, write, update and delete are only accessible to 
 
 ### Postman Documentation
 
-[In progress]
+https://documenter.getpostman.com/view/26053493/2sAYHwHj6C
 
 ### Key Considerations
 
 - Role is used to determine access level within a company
 - Used query annotations, select related and prefetch related to decrease the number of database queries
 - Any user can create a company and an employee record will be automatically created for them and they will automatically be assigned to `"{{Company name }}- Main"` Department, this is all done through a transaction
+
+
+### Potential Improvements
+- Add a global App response, that could have keys like status, message, and data to ensure consistency
