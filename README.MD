@@ -6,6 +6,7 @@ Employee Management System API written in Django using Django REST framework
 
 ```
 pip install -r requirements.txt
+python manage.py migrate   # Run migrations
 python manage.py runserver
 ```
 
