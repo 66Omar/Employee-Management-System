@@ -99,7 +99,7 @@ https://documenter.getpostman.com/view/26053493/2sAYHwHj6C
 
 - Role is used to determine access level within a company
 - Used query annotations, select related and prefetch related to decrease the number of database queries
-- Any user can create a company and an employee record will be automatically created for them and they will automatically be assigned to `"{{Company name }}- Main"` Department, this is all done through a transaction
+- Any user can create a company and an employee record will be automatically created for them and they will automatically be assigned to `"{{Company name }} - Main"` Department, this is all done through a transaction
 
 
 ### Potential Improvements
